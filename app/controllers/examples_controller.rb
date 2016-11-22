@@ -22,7 +22,7 @@ class ExamplesController < OpenReadController
     @example = current_user.examples.build(example_params)
 
     if @example.save
-      render json: @example, status: :created, location: @example
+      render json: @example, status: :created
     else
       render json: @example.errors, status: :unprocessable_entity
     end
