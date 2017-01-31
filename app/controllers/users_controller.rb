@@ -8,7 +8,7 @@ class UsersController < ProtectedController
     if user.valid?
       render json: user, status: :created
     else
-      head :bad_request
+      render json: user.errors, status: :bad_request
     end
   end
 
