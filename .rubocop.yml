@@ -1,8 +1,6 @@
 Style/Documentation:
   Exclude:
-    - 'app/controllers/*'
-    - 'app/models/*'
-    - 'app/serializers/*'
+    - 'app/**/*'
     - 'db/migrate/**'
 
 Metrics/BlockLength:
@@ -10,6 +8,8 @@ Metrics/BlockLength:
     - 'spec/**/*'
 
 AllCops:
+  TargetRubyVersion:
+    2.3
   Exclude:
     - 'bin/*'
     - 'config/database.yml'
