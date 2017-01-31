@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Example < ActiveRecord::Base
+class Example < ApplicationRecord
   belongs_to :user
   validates :text, :user, presence: true
 end
