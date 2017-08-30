@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateExamples < ActiveRecord::Migration
   def change
     create_table :examples do |t|
