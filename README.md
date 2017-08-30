@@ -40,9 +40,13 @@ version of Rails 4, as well as track `master` branches for `rails-api` and
     config:set` or the Heroku dashboard).
 1.  In order to make requests from your deployed client application, you will
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
-    `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-1.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
-    db:nuke_pave`.
+    `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
+1.  Setup your database with:
+    - bin/rake db:drop (if it already exists)
+    - bin/rake db:create
+    - bin/rake db:migrate
+    - bin/rake db:seed
+    - bin/rake db:examples
 1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ## Structure
