@@ -1,4 +1,4 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+Rails[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 # rails-api-template
 
@@ -16,10 +16,6 @@ Install with `bundle install`.
 -   [`ruby`](https://www.ruby-lang.org/en/)
 -   [`postgres`](http://www.postgresql.org)
 
-Until Rails 5 is released, this template should follow the most recent released
-version of Rails 4, as well as track `master` branches for `rails-api` and
-`active_model_serializers`.
-
 ## Installation
 
 1.  [Download](../../archive/master.zip) this template.
@@ -31,6 +27,7 @@ version of Rails 4, as well as track `master` branches for `rails-api` and
     `RailsApiTemplate`).
 1.  Rename your project database in `config/database.yml` (change
     `'rails-api-template'`).
+1.  `git add` and `git commit` your changes.
 1.  Create a `.env` for sensitive settings (`touch .env`).
 1.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
 1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
@@ -40,14 +37,18 @@ version of Rails 4, as well as track `master` branches for `rails-api` and
     config:set` or the Heroku dashboard).
 1.  In order to make requests from your deployed client application, you will
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
-    `heroku config:set CLIENT_ORIGIN https://<github-username>.github.io`).
-1.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
-    db:nuke_pave`.
+    `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
+1.  Setup your database with:
+    - bin/rake db:drop (if it already exists)
+    - bin/rake db:create
+    - bin/rake db:migrate
+    - bin/rake db:seed
+    - bin/rake db:examples
 1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ## Structure
 
-This template follows the standard project structure in Rails 4.
+This template follows the standard project structure in Rails.
 
 `curl` command scripts are stored in [`scripts`](scripts) with names that
 correspond to API actions.

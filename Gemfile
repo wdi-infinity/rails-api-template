@@ -1,22 +1,23 @@
 # frozen_string_literal: true
+
 #
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.1'
 
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.6'
 gem 'bcrypt', '~> 3.1.11'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'rack-cors', require: 'rack/cors'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.1.3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
-  gem 'pry', '~> 0.10'
-  gem 'pry-byebug', '~> 3.3'
-  gem 'rspec-rails', '~> 3.5'
-  gem 'rubocop', '~> 0.46'
+  gem 'dotenv-rails', '~> 2.2.1'
+  gem 'pry', '~> 0.10.4'
+  gem 'pry-byebug', '~> 3.4.3'
+  gem 'rspec-rails', '~> 3.6.1'
+  gem 'rubocop', '~> 0.49.1'
 end
 
 group :development do
