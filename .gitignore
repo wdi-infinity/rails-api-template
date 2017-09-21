@@ -147,3 +147,4 @@ bower.json # same
 .byebug_history
 
 # End of https://www.gitignore.io/api/rails
+.env
