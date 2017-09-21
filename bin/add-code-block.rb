@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-
 infile_name = ARGV[0]
 infile_name || abort('filename required')
 outfile = $stdout
