@@ -33,7 +33,7 @@ class ExamplesController < OpenReadController
   # PATCH/PUT /examples/1.json
   def update
     if @example.update(example_params)
-      head :no_content
+      render json: @example
     else
       render json: @example.errors, status: :unprocessable_entity
     end

@@ -6,6 +6,10 @@ A template for starting projects with `rails-api`. Includes authentication.
 
 At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
 
+## Prerequisites
+
+-   [rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)
+
 ## Dependencies
 
 Install with `bundle install`.
@@ -29,7 +33,7 @@ Install with `bundle install`.
     `'rails-api-template'`).
 1.  `git add` and `git commit` your changes.
 1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
+1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
 1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
     respectively.
 1.  In order to make requests to your deployed API, you will need to set
@@ -38,12 +42,13 @@ Install with `bundle install`.
 1.  In order to make requests from your deployed client application, you will
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
     `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
+    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
 1.  Setup your database with:
-    - bin/rake db:drop (if it already exists)
-    - bin/rake db:create
-    - bin/rake db:migrate
-    - bin/rake db:seed
-    - bin/rake db:examples
+    - bin/rails db:drop (if it already exists)
+    - bin/rails db:create
+    - bin/rails db:migrate
+    - bin/rails db:seed
+    - bin/rails db:examples
 1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ## Structure
@@ -59,8 +64,8 @@ User authentication is built-in.
 
 Developers should run these often!
 
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
+-   `bin/rails routes` lists the endpoints available in your API.
+-   `bin/rails test` runs automated tests.
 -   `bin/rails console` opens a REPL that pre-loads the API.
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
@@ -85,8 +90,8 @@ tests in RSpec to test your API.
 |--------|------------------------|-------------------|
 | POST   | `/sign-up`             | `users#signup`    |
 | POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/:id` | `users#changepw`  |
-| DELETE | `/sign-out/:id`        | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
+| DELETE | `/sign-out`        | `users#signout`   |
 
 #### POST /sign-up
 
@@ -160,12 +165,12 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### PATCH /change-password/:id
+#### PATCH /change-password
 
 Request:
 
 ```sh
-curl --include --request PATCH "http://localhost:4741/change-password/$ID" \
+curl --include --request PATCH "http://localhost:4741/change-password" \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
@@ -177,7 +182,7 @@ curl --include --request PATCH "http://localhost:4741/change-password/$ID" \
 ```
 
 ```sh
-ID=1 OLDPW=hannah NEWPW=elle TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/change-password.sh
+OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/change-password.sh
 ```
 
 Response:
@@ -186,19 +191,19 @@ Response:
 HTTP/1.1 204 No Content
 ```
 
-#### DELETE /sign-out/:id
+#### DELETE /sign-out
 
 Request:
 
 ```sh
-curl http://localhost:4741/sign-out/$ID \
+curl http://localhost:4741/sign-out \
   --include \
   --request DELETE \
   --header "Authorization: Token token=$TOKEN"
 ```
 
 ```sh
-ID=1 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/sign-out.sh
+TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/sign-out.sh
 ```
 
 Response:
@@ -283,16 +288,21 @@ This is not a task developers should run often, but it is sometimes necessary.
 **locally**
 
 ```sh
-bin/rake db:migrate VERSION=0
-bin/rake db:migrate db:seed db:examples
+bin/rails db:migrate VERSION=0
+bin/rails db:migrate db:seed db:examples
 ```
 
 **heroku**
 
 ```sh
-heroku run rake db:migrate VERSION=0
-heroku run rake db:migrate db:seed db:examples
+heroku run rails db:migrate VERSION=0
+heroku run rails db:migrate db:seed db:examples
 ```
+
+## Additional Resources
+- [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
+- http://guides.rubyonrails.org/api_app.html
+- https://blog.codeship.com/building-a-json-api-with-rails-5/
 
 ## [License](LICENSE)
 
