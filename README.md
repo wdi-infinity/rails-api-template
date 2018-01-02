@@ -294,6 +294,10 @@ heroku run rake db:migrate VERSION=0
 heroku run rake db:migrate db:seed db:examples
 ```
 
+## Additional Resources
+- http://guides.rubyonrails.org/api_app.html
+- https://blog.codeship.com/building-a-json-api-with-rails-5/
+
 ## [License](LICENSE)
 
 1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
