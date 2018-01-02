@@ -29,7 +29,7 @@ Install with `bundle install`.
     `'rails-api-template'`).
 1.  `git add` and `git commit` your changes.
 1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rake secret`).
+1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
 1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
     respectively.
 1.  In order to make requests to your deployed API, you will need to set
@@ -39,11 +39,11 @@ Install with `bundle install`.
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
     `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
 1.  Setup your database with:
-    - bin/rake db:drop (if it already exists)
-    - bin/rake db:create
-    - bin/rake db:migrate
-    - bin/rake db:seed
-    - bin/rake db:examples
+    - bin/rails db:drop (if it already exists)
+    - bin/rails db:create
+    - bin/rails db:migrate
+    - bin/rails db:seed
+    - bin/rails db:examples
 1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ## Structure
@@ -59,8 +59,8 @@ User authentication is built-in.
 
 Developers should run these often!
 
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
+-   `bin/rails routes` lists the endpoints available in your API.
+-   `bin/rails test` runs automated tests.
 -   `bin/rails console` opens a REPL that pre-loads the API.
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
@@ -283,15 +283,15 @@ This is not a task developers should run often, but it is sometimes necessary.
 **locally**
 
 ```sh
-bin/rake db:migrate VERSION=0
-bin/rake db:migrate db:seed db:examples
+bin/rails db:migrate VERSION=0
+bin/rails db:migrate db:seed db:examples
 ```
 
 **heroku**
 
 ```sh
-heroku run rake db:migrate VERSION=0
-heroku run rake db:migrate db:seed db:examples
+heroku run rails db:migrate VERSION=0
+heroku run rails db:migrate db:seed db:examples
 ```
 
 ## Additional Resources
