@@ -12,18 +12,16 @@ RSpec.describe 'routes for users' do
   end
 
   it 'routes DELETE /sign-out/:id to the users#signout action' do
-    expect(delete('/sign-out/1')).to route_to(
+    expect(delete('/sign-out')).to route_to(
       controller: 'users',
-      action: 'signout',
-      id: '1'
+      action: 'signout'
     )
   end
 
   it 'routes PATCH /change-password/:id to the users#changepw action' do
-    expect(patch('/change-password/1')).to route_to(
+    expect(patch('/change-password')).to route_to(
       controller: 'users',
-      action: 'changepw',
-      id: '1'
+      action: 'changepw'
     )
   end
 

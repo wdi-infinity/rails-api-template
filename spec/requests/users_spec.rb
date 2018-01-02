@@ -67,7 +67,7 @@ RSpec.describe 'Authentication API' do
       @user_id = JSON.parse(response.body)['user']['id']
     end
 
-    describe 'PATCH /change-password/:id' do
+    describe 'PATCH /change-password/' do
       def new_password_params
         {
           old: 'foobarbaz',
@@ -76,7 +76,7 @@ RSpec.describe 'Authentication API' do
       end
 
       it 'changes password' do
-        patch "/change-password/#{@user_id}",
+        patch "/change-password/",
               params: { passwords: new_password_params },
               headers: headers
 
@@ -85,17 +85,17 @@ RSpec.describe 'Authentication API' do
       end
     end
 
-    describe 'DELETE /sign-out/:id' do
+    describe 'DELETE /sign-out/' do
       it 'is successful' do
-        delete "/sign-out/#{@user_id}", headers: headers
+        delete "/sign-out/", headers: headers
 
         expect(response).to be_success
         expect(response.body).to be_empty
       end
 
       it 'expires the token' do
-        delete "/sign-out/#{@user_id}", headers: headers
-        delete "/sign-out/#{@user_id}", headers: headers
+        delete "/sign-out/", headers: headers
+        delete "/sign-out/", headers: headers
 
         expect(response).not_to be_success
       end
