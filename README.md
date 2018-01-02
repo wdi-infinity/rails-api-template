@@ -42,6 +42,7 @@ Install with `bundle install`.
 1.  In order to make requests from your deployed client application, you will
     need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
     `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
+    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
 1.  Setup your database with:
     - bin/rails db:drop (if it already exists)
     - bin/rails db:create
@@ -299,6 +300,7 @@ heroku run rails db:migrate db:seed db:examples
 ```
 
 ## Additional Resources
+- [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
 - http://guides.rubyonrails.org/api_app.html
 - https://blog.codeship.com/building-a-json-api-with-rails-5/
 
