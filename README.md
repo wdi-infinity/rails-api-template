@@ -85,8 +85,8 @@ tests in RSpec to test your API.
 |--------|------------------------|-------------------|
 | POST   | `/sign-up`             | `users#signup`    |
 | POST   | `/sign-in`             | `users#signin`    |
-| PATCH  | `/change-password/:id` | `users#changepw`  |
-| DELETE | `/sign-out/:id`        | `users#signout`   |
+| PATCH  | `/change-password`     | `users#changepw`  |
+| DELETE | `/sign-out`        | `users#signout`   |
 
 #### POST /sign-up
 
@@ -160,12 +160,12 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-#### PATCH /change-password/:id
+#### PATCH /change-password
 
 Request:
 
 ```sh
-curl --include --request PATCH "http://localhost:4741/change-password/$ID" \
+curl --include --request PATCH "http://localhost:4741/change-password" \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
@@ -177,7 +177,7 @@ curl --include --request PATCH "http://localhost:4741/change-password/$ID" \
 ```
 
 ```sh
-ID=1 OLDPW=hannah NEWPW=elle TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/change-password.sh
+OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/change-password.sh
 ```
 
 Response:
@@ -186,19 +186,19 @@ Response:
 HTTP/1.1 204 No Content
 ```
 
-#### DELETE /sign-out/:id
+#### DELETE /sign-out
 
 Request:
 
 ```sh
-curl http://localhost:4741/sign-out/$ID \
+curl http://localhost:4741/sign-out \
   --include \
   --request DELETE \
   --header "Authorization: Token token=$TOKEN"
 ```
 
 ```sh
-ID=1 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/sign-out.sh
+TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/sign-out.sh
 ```
 
 Response:

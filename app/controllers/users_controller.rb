@@ -24,14 +24,10 @@ class UsersController < ProtectedController
     end
   end
 
-  # DELETE '/sign-out/1'
+  # DELETE '/sign-out'
   def signout
-    if current_user == User.find(params[:id])
-      current_user.logout
-      head :no_content
-    else
-      head :unauthorized
-    end
+    current_user.logout
+    head :no_content
   end
 
   # PATCH '/change-password/:id'
