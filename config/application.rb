@@ -30,5 +30,17 @@ module RailsApiTemplate
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # By default in Rails 4 loading an AR model won't establish a connection
+    # to the database until AR needs to fetch database therefore in the console
+    # asking for a model like Patient will message
+    # Patient (call 'Patient.connection' to establish a connection)
+    # and will not show the column names since not connected to database.
+    # A call such as Patient.all is required to connect to the database.
+    #
+    # Overriding to  establish a connection to the database when in the console
+    console do
+      ActiveRecord::Base.connection
+    end
   end
 end
