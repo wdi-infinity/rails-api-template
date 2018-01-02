@@ -3,5 +3,4 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
-  validates :email, presence: true
 end
