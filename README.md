@@ -226,6 +226,7 @@ HTTP/1.1 204 No Content
 |------|-------------|-------------------|
 | GET  | `/users`    | `users#index`     |
 | GET  | `/users/1`  | `users#show`      |
+| PATCH| `/users/1`  | `users#update`    |
 
 #### GET /users
 
@@ -287,6 +288,38 @@ Content-Type: application/json; charset=utf-8
     "email": "bob@ava.com"
   }
 }
+```
+
+#### PATCH /users/:id
+
+Request:
+
+```sh
+curl "http://localhost:4741/users/${ID}" \
+  --include \
+  --request PATCH \
+  --header "Authorization: Token token=${TOKEN}" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "user": {
+      "email": "'"${EMAIL}"'"
+    }
+  }'
+```
+
+```sh
+ID=1 TOKEN="BAhJIiU1NGNlYjRmMjBhM2NkZTZiNzk1MGNiYmZiYWMyY2U4MwY6BkVG--ddb1e16af0e05921aa56d771e4a2f816f2a1d46e"
+EMAIL=mike@m
+sh scripts/users/user-update.sh
+```
+
+Response:
+
+```md
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{"user":{"id":1,"email":"mike@m"}}
 ```
 
 ### Reset Database without dropping

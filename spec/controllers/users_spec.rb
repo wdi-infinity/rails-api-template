@@ -80,6 +80,29 @@ RSpec.describe UsersController do
       end
     end
 
+    describe 'PATCH update' do
+      def user_email_params
+        {
+          email: 'foobarbaz@f'
+        }
+      end
+
+      before(:each) do
+        patch :update,
+              params: { id: @user_id, user: user_email_params },
+              format: :json
+      end
+
+      it 'is successful' do
+        expect(response).to be_successful
+      end
+
+      it 'renders @user' do
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response['user']['email']).to eql(user_email_params[:email])
+      end
+    end
+
     describe 'DELETE signout' do
       before(:each) do
         delete :signout, params: { id: @user_id }, format: :json
