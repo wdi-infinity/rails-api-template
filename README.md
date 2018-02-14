@@ -22,34 +22,42 @@ Install with `bundle install`.
 
 ## Installation
 
+### Download Template:
 1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
+1.  Unzip and rename the template directory (`unzip ~/Downloads/rails-api-template-master.zip`)
 1.  Move into the new project and `git init`.
-1.  Install dependencies with `bundle install`.
+
+### Customize Template:
+1.  Empty [`README.md`](README.md) and fill with your own content.
 1.  Rename your app module in `config/application.rb` (change
     `RailsApiTemplate`).
 1.  Rename your project database in `config/database.yml` (change
     `'rails-api-template'`).
+
+### Setup Environment:
+1.  Install dependencies with `bundle install`.
 1.  `git add` and `git commit` your changes.
 1.  Create a `.env` for sensitive settings (`touch .env`).
 1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
 1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
     respectively.
 1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (using `heroku
-    config:set` or the Heroku dashboard).
+    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
 1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (e.g.
-    `heroku config:set CLIENT_ORIGIN=Fhttps://<github-username>.github.io`).
+    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
     See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
-1.  Setup your database with:
+
+### Setup your database:
     - bin/rails db:drop (if it already exists)
     - bin/rails db:create
     - bin/rails db:migrate
     - bin/rails db:seed
     - bin/rails db:examples
-1.  Run the API server with `bin/rails server` or `bundle exec rails server`.
+
+  Note: Remember to follow the same commands when setting up your deployed database!
+
+### Run your server!
+1. Run the API server with `bin/rails server` or `bundle exec rails server`.
 
 ## Structure
 
