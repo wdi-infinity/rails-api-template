@@ -7,6 +7,10 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+Style/FrozenStringLiteralComment:
+   Exclude:
+    - 'snippets/**/*'
+
 AllCops:
   TargetRubyVersion:
     2.3
