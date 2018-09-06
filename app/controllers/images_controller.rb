@@ -3,7 +3,6 @@ class ImagesController < ProtectedController
 
   # GET /images
   def index
-    binding.pru
     @images = Image.all
 
     render json: @images
