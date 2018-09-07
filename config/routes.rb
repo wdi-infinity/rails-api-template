@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   resources :albums, only: %i[index]
-  resources :images, only: %i[update]
 
   # Custom routes
   post '/sign-up' => 'users#signup'

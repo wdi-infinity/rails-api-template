@@ -3,8 +3,20 @@ class AlbumsController < ProtectedController
 
   # GET /albums
   def index
+    # binding.pry
     @albums = current_user.albums
-
+    # @albums = Album.where(view_user_id: current_user.id)
+    # @albums_data = @albums.map do |album|
+    #   album_hash = album.attributes
+    #   images = AlbumImage.where(album_id: album_hash['id']).map do |album_image|
+    #     image = Image.find(album_image['image_id']).attributes
+    #     photographer = Photographer.find(image['photographers_id'])
+    #     image['photographer_name'] = "#{photographer['first_name']} #{photographer['last_name']}"
+    #     image
+    #   end
+    #   album_hash['images'] = images
+    #   album_hash
+    # end
     render json: @albums
   end
 
