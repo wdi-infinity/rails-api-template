@@ -12,8 +12,7 @@ if Rails.env.development?
   development_cors_port = 'GA'.each_byte.reduce('') do |a, e|
     a + format('%d', e)
   end.to_i
-  # development_client_origin = "http://localhost:#{development_cors_port}"
-  development_client_origin = "http://localhost:3000"
+  development_client_origin = "http://localhost:#{development_cors_port}"
 end
 
 development_client_origin ||= ENV['CLIENT_ORIGIN']

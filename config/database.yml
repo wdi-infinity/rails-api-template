@@ -1,4 +1,4 @@
-<% project_name = 'sovo-picker-server' %>
+<% project_name = 'rails-api-template' %>
 
 default: &default
   adapter: postgresql
