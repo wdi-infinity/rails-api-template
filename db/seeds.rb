@@ -58,14 +58,15 @@ image_data.each do |row|
     email: "#{row['artist_first_name']}#{row['artist_last_name']}@gmail.com",
     password: "SOVO#{row['artist_first_name']}",
     password_confirmation: "SOVO#{row['artist_first_name']}",
-    user_types_id: user_type_artist_id
+    user_types_id: user_type_artist_id,
+    change_pw: false
   )
   user.save!
   puts "making Album 'SOVO// Magazine Issue 3' for " \
        "#{row['artist_first_name']} #{row['artist_last_name']}"
 
   Album.create!(
-    name: 'SOVO// Magazine Issue 3',
+    name: 'Issue 3 Editorial',
     information: '',
     user_id: user.id
   )
