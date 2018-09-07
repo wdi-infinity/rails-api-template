@@ -1,1 +1,0 @@
-arn:aws:iam::255535473577:user/sovo-picker-upload

@@ -9,10 +9,8 @@ gem 'pg', '~> 0.21'
 gem 'puma', '~> 3.11.2'
 gem 'rack-cors', '~> 1.0.2', require: 'rack/cors'
 gem 'rails', '~> 5.1.3'
-gem 'aws-sdk-s3'
 
 group :development, :test do
-  gem 'rails-erd'
   gem 'byebug', '~> 10.0.0', platform: :mri
   gem 'dotenv-rails', '~> 2.2.1'
   gem 'pry', '~> 0.11.3'
