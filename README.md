@@ -63,7 +63,7 @@ Install with `bundle install`.
 
 This template follows the standard project structure in Rails.
 
-`curl` command scripts are stored in [`scripts`](scripts) with names that
+`curl` command scripts are stored in [`curl-scripts`](curl-scripts) with names that
 correspond to API actions.
 
 User authentication is built-in.
@@ -77,7 +77,7 @@ Developers should run these often!
 -   `bin/rails console` opens a REPL that pre-loads the API.
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
+-   `curl-scripts/*.sh` run various `curl` commands to test the API. See below.
 
 <!-- TODO -   `rake nag` checks your code style. -->
 <!-- TODO -   `rake lint` checks your code for syntax errors. -->
@@ -88,7 +88,7 @@ Use this as the basis for your own API documentation. Add a new third-level
 heading for your custom entities, and follow the pattern provided for the
 built-in user authentication documentation.
 
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
+Scripts are included in [`curl-scripts`](curl-scripts) to test built-in actions. Add your
 own scripts to test your custom API. As an alternative, you can write automated
 tests in RSpec to test your API.
 
@@ -120,7 +120,7 @@ curl http://localhost:4741/sign-up \
 ```
 
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-up.sh
+EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/sign-up.sh
 ```
 
 Response:
@@ -155,7 +155,7 @@ curl http://localhost:4741/sign-in \
 ```
 
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-in.sh
+EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/sign-in.sh
 ```
 
 Response:
@@ -190,7 +190,7 @@ curl --include --request PATCH "http://localhost:4741/change-password" \
 ```
 
 ```sh
-OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/change-password.sh
+OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/change-password.sh
 ```
 
 Response:
@@ -211,7 +211,7 @@ curl http://localhost:4741/sign-out \
 ```
 
 ```sh
-TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh scripts/sign-out.sh
+TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/sign-out.sh
 ```
 
 Response:
@@ -240,7 +240,7 @@ curl http://localhost:4741/users \
 ```
 
 ```sh
-TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/users.sh
+TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f curl-scripts/users.sh
 ```
 
 Response:
@@ -273,7 +273,7 @@ curl --include --request GET http://localhost:4741/users/$ID \
 ```
 
 ```sh
-ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f scripts/user.sh
+ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f curl-scripts/user.sh
 ```
 
 Response:
@@ -310,7 +310,7 @@ curl "http://localhost:4741/users/${ID}" \
 ```sh
 ID=1 TOKEN="BAhJIiU1NGNlYjRmMjBhM2NkZTZiNzk1MGNiYmZiYWMyY2U4MwY6BkVG--ddb1e16af0e05921aa56d771e4a2f816f2a1d46e"
 EMAIL=mike@m
-sh scripts/users/user-update.sh
+sh curl-scripts/users/user-update.sh
 ```
 
 Response:
