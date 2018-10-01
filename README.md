@@ -73,7 +73,7 @@ User authentication is built-in.
 Developers should run these often!
 
 -   `bin/rails routes` lists the endpoints available in your API.
--   `bin/rails test` runs automated tests.
+-   `bin/rspec spec` runs automated tests.
 -   `bin/rails console` opens a REPL that pre-loads the API.
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
