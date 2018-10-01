@@ -117,7 +117,7 @@ curl http://localhost:4741/sign-up \
 ```
 
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/sign-up.sh
+EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/auth/sign-up.sh
 ```
 
 Response:
@@ -152,7 +152,7 @@ curl http://localhost:4741/sign-in \
 ```
 
 ```sh
-EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/sign-in.sh
+EMAIL=ava@bob.com PASSWORD=hannah curl-scripts/auth/sign-in.sh
 ```
 
 Response:
@@ -187,7 +187,7 @@ curl --include --request PATCH "http://localhost:4741/change-password" \
 ```
 
 ```sh
-OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/change-password.sh
+OLDPW='hannah' NEWPW='elle' TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/auth/change-password.sh
 ```
 
 Response:
@@ -208,7 +208,7 @@ curl http://localhost:4741/sign-out \
 ```
 
 ```sh
-TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/sign-out.sh
+TOKEN='BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f' sh curl-scripts/auth/sign-out.sh
 ```
 
 Response:
