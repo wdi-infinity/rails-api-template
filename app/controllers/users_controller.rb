@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ProtectedController
-  before_action :set_user, only: %i[update show]
   skip_before_action :authenticate, only: %i[signup signin]
 
   # POST '/sign-up'
@@ -47,27 +46,7 @@ class UsersController < ProtectedController
     end
   end
 
-  def index
-    render json: User.all
-  end
-
-  def show
-    render json: @user
-  end
-
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_creds
     params.require(:credentials)
@@ -77,10 +56,5 @@ class UsersController < ProtectedController
   def pw_creds
     params.require(:passwords)
           .permit(:old, :new)
-  end
-
-  def user_params
-    params.require(:user)
-          .permit(:email)
   end
 end
