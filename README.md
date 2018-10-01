@@ -79,9 +79,6 @@ Developers should run these often!
 -   `bin/rails server` starts the API.
 -   `curl-scripts/*.sh` run various `curl` commands to test the API. See below.
 
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
-
 ## API
 
 Use this as the basis for your own API documentation. Add a new third-level
