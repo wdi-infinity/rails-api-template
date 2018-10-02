@@ -15,7 +15,8 @@ Rails.application.config.active_record.belongs_to_required_by_default = true
 
 # Do not halt callback chains when a callback returns false.
 # Previous versions had true.
-ActiveSupport.halt_callback_chains_on_return_false = false
+# see https://github.com/rails/rails/issues/32653#issuecomment-383063063
+# ActiveSupport.halt_callback_chains_on_return_false = false
 
 # Configure SSL options to enable HSTS with subdomains.
 # Previous versions had false.

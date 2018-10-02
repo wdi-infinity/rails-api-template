@@ -57,9 +57,6 @@ Temporary Items
 /test/version_tmp/
 /tmp/
 
-# Used by dotenv library to load environment variables.
-# .env
-
 ## Specific to RubyMotion:
 .dat*
 .repl_history
@@ -122,7 +119,6 @@ pickle-email-*.html
 # config/secrets.yml
 
 # dotenv
-# TODO Comment out this rule if environment variables can be committed
 .env
 
 ## Environment normalization:
@@ -147,5 +143,3 @@ bower.json # same
 .byebug_history
 
 # End of https://www.gitignore.io/api/rails
-.env
-.env
