@@ -6,10 +6,6 @@ A template for starting projects with `rails-api`. Includes authentication.
 
 At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
 
-## Prerequisites
-
--   [rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)
-
 ## Dependencies
 
 Install with `bundle install`.
