@@ -37,15 +37,6 @@ Install with `bundle install`.
 ### Setup Environment:
 1.  Install dependencies with `bundle install`.
 1.  `git add` and `git commit` your changes.
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
 
 ### Setup your database:
     - bin/rails db:drop (if it already exists)
@@ -63,9 +54,6 @@ Install with `bundle install`.
 
 This template follows the standard project structure in Rails.
 
-`curl` command scripts are stored in [`curl-scripts`](curl-scripts) with names that
-correspond to API actions.
-
 User authentication is built-in.
 
 ## Tasks
@@ -73,11 +61,9 @@ User authentication is built-in.
 Developers should run these often!
 
 -   `bin/rails routes` lists the endpoints available in your API.
--   `bin/rspec spec` runs automated tests.
 -   `bin/rails console` opens a REPL that pre-loads the API.
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
--   `curl-scripts/*.sh` run various `curl` commands to test the API. See below.
 
 ## API
 
@@ -103,7 +89,7 @@ tests in RSpec to test your API.
 Request:
 
 ```sh
-curl http://localhost:4741/sign-up \
+curl http://localhost:8000/sign-up \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
@@ -139,7 +125,7 @@ Content-Type: application/json; charset=utf-8
 Request:
 
 ```sh
-curl http://localhost:4741/sign-in \
+curl http://localhost:8000/sign-in \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
@@ -175,7 +161,7 @@ Content-Type: application/json; charset=utf-8
 Request:
 
 ```sh
-curl --include --request PATCH "http://localhost:4741/change-password" \
+curl --include --request PATCH "http://localhost:8000/change-password" \
   --header "Authorization: Token token=$TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
@@ -201,7 +187,7 @@ HTTP/1.1 204 No Content
 Request:
 
 ```sh
-curl http://localhost:4741/sign-out \
+curl http://localhost:8000/sign-out \
   --include \
   --request DELETE \
   --header "Authorization: Token token=$TOKEN"
@@ -215,108 +201,6 @@ Response:
 
 ```md
 HTTP/1.1 204 No Content
-```
-
-### Users
-
-| Verb | URI Pattern | Controller#Action |
-|------|-------------|-------------------|
-| GET  | `/users`    | `users#index`     |
-| GET  | `/users/1`  | `users#show`      |
-| PATCH| `/users/1`  | `users#update`    |
-
-#### GET /users
-
-Request:
-
-```sh
-curl http://localhost:4741/users \
-  --include \
-  --request GET \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f curl-scripts/users.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "users": [
-    {
-      "id": 2,
-      "email": "bob@ava.com"
-    },
-    {
-      "id": 1,
-      "email": "ava@bob.com"
-    }
-  ]
-}
-```
-
-#### GET /users/:id
-
-Request:
-
-```sh
-curl --include --request GET http://localhost:4741/users/$ID \
-  --header "Authorization: Token token=$TOKEN"
-```
-
-```sh
-ID=2 TOKEN=BAhJIiVlZDIwZTMzMzQzODg5NTBmYjZlNjRlZDZlNzYxYzU2ZAY6BkVG--7e7f77f974edcf5e4887b56918f34cd9fe293b9f curl-scripts/user.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 2,
-    "email": "bob@ava.com"
-  }
-}
-```
-
-#### PATCH /users/:id
-
-Request:
-
-```sh
-curl "http://localhost:4741/users/${ID}" \
-  --include \
-  --request PATCH \
-  --header "Authorization: Token token=${TOKEN}" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "user": {
-      "email": "'"${EMAIL}"'"
-    }
-  }'
-```
-
-```sh
-ID=1 TOKEN="BAhJIiU1NGNlYjRmMjBhM2NkZTZiNzk1MGNiYmZiYWMyY2U4MwY6BkVG--ddb1e16af0e05921aa56d771e4a2f816f2a1d46e"
-EMAIL=mike@m
-sh curl-scripts/users/user-update.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{"user":{"id":1,"email":"mike@m"}}
 ```
 
 ### Reset Database without dropping
